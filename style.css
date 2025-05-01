@@ -1,0 +1,214 @@
+/* Style Guide Updates */
+
+/* Colors */
+:root {
+    --neutral-0: hsl(0, 0%, 100%);
+    --neutral-300: hsl(252, 6%, 83%);
+    --neutral-500: hsl(245, 15%, 58%);
+    --neutral-700: hsl(245, 19%, 35%);
+    --neutral-900: hsl(248, 70%, 10%);
+    --orange-500: hsl(7, 88%, 67%);
+    --orange-700: hsl(7, 71%, 60%);
+    --gradient-orange-start: hsl(7, 86%, 67%);
+    --gradient-white-end: hsl(0, 0%, 100%);
+    --font-family-base: 'Inconsolata', monospace; /* Fallback to monospace if Inconsolata isn't loaded */
+}
+
+body {
+    font-family: var(--font-family-base);
+    line-height: 1.6;
+    margin: 20px;
+    background-color: var(--neutral-300); /* Using a neutral color for the background */
+    color: var(--neutral-900); /* Using a dark neutral color for text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: var(--neutral-0);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1440px; /* Using the desktop design width as max-width */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-section,
+.ticket-section {
+    padding: 20px;
+    border: 1px solid var(--neutral-500); /* Using a neutral color for the border */
+    border-radius: 6px;
+}
+
+.form-section h1,
+.ticket-section h2 {
+    color: var(--neutral-700); /* Using a darker neutral color for headings */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500; /* Using one of the specified font weights */
+    color: var(--neutral-700);
+    font-size: 20px; /* Applying the label font size */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--neutral-300); /* Using a lighter neutral color for input borders */
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: var(--font-family-base); /* Apply the specified font family */
+    font-weight: 400; /* Using one of the specified font weights */
+}
+
+.form-group input[type="file"] {
+    padding: 5px;
+}
+
+.error-message {
+    color: var(--orange-500); /* Using the orange color for error messages */
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    background-color: var(--orange-500);
+    color: var(--neutral-0);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    font-family: var(--font-family-base); /* Apply the specified font family */
+    font-weight: 700; /* Using one of the specified font weights */
+}
+
+button[type="submit"]:hover {
+    background-color: var(--orange-700);
+}
+
+#ticket-preview {
+    background-color: var(--neutral-0); /* Keeping the ticket preview white */
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    border: 1px solid var(--neutral-500); /* Adding a border to the preview */
+}
+
+/* Basic styling for the generated ticket */
+.generated-ticket {
+    background-color: var(--neutral-0);
+    border: 1px solid var(--neutral-500);
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 15px;
+    text-align: left;
+    font-family: var(--font-family-base); /* Apply the specified font family */
+    font-weight: 400;
+}
+
+.ticket-info {
+    margin-bottom: 10px;
+    font-size: 18px; /* Adjusting the info text size */
+}
+
+.ticket-info strong {
+    font-weight: 700; /* Using a stronger weight for labels in the ticket */
+    margin-right: 5px;
+    color: var(--neutral-700);
+}
+
+.avatar-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 10px auto;
+    border: 2px solid var(--neutral-500); /* Adding a border to the avatar */
+}
+
+.avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        gap: 40px;
+        align-items: flex-start;
+    }
+
+    .form-section,
+    .ticket-section {
+        flex: 1;
+    }
+
+    button[type="submit"] {
+        width: auto;
+        max-width: 200px;
+    }
+
+    #ticket-preview {
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #ticket-preview p {
+        margin: 0;
+        font-family: var(--font-family-base);
+        font-weight: 400;
+        font-size: 1.2em;
+        color: var(--neutral-700);
+    }
+}
+
+/* Mobile specific adjustments (if needed) */
+@media (max-width: 375px) {
+    .container {
+        width: 95%; /* Adjust container width for smaller screens */
+        margin: 15px;
+    }
+
+    .form-section h1,
+    .ticket-section h2 {
+        font-size: 1.8em; /* Slightly smaller headings on mobile */
+    }
+
+    .form-group label {
+        font-size: 18px; /* Slightly smaller labels on mobile */
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="file"] {
+        font-size: 14px; /* Slightly smaller input text on mobile */
+    }
+
+    .ticket-info {
+        font-size: 16px; /* Slightly smaller ticket info on mobile */
+    }
+}
