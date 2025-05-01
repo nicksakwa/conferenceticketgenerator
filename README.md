@@ -1,18 +1,16 @@
+# Hey there! 👋
+
+**This is a front-end mentors challenge project I did with CSS and JavaScript.**
+
 # Conference ticket generator - Frontend Mentor Challenge
 
 ![Design preview for the Conference ticket generator coding challenge](./preview.jpg)
-
-# Hey there! 👋
-
-[Frontend Mentor](https://www.frontendmentor.io) .
-
-**This is a front end mentors challenge project I did with , CSS and JavaScript.**
 
 ## The challenge
 
 The challenge is to build out this conference ticket generator and get it looking as close to the design as possible.
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+You can use any tools you like to help you complete the challenge. So, if you have something you'd like to practice, feel free to give it a go.
 
 Users should be able to: 
 
