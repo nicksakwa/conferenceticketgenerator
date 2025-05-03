@@ -1,6 +1,5 @@
-/* Style Guide Updates */
+/* Style Guide Updates and Asset Integration */
 
-/* Colors */
 :root {
     --neutral-0: hsl(0, 0%, 100%);
     --neutral-300: hsl(252, 6%, 83%);
@@ -9,17 +8,54 @@
     --neutral-900: hsl(248, 70%, 10%);
     --orange-500: hsl(7, 88%, 67%);
     --orange-700: hsl(7, 71%, 60%);
-    --gradient-orange-start: hsl(7, 86%, 67%);
-    --gradient-white-end: hsl(0, 0%, 100%);
-    --font-family-base: 'Inconsolata', monospace; /* Fallback to monospace if Inconsolata isn't loaded */
+    --gradient-dark-start: #383068;
+    --gradient-dark-end: #191435;
+}
+
+/* Define the Inconsolata font family with specific weights */
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../assets/fonts/static/Inconsolata-Regular.ttf') format('truetype');
+    font-weight: 400; /* Regular */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../assets/fonts/static/Inconsolata-Medium.ttf') format('truetype');
+    font-weight: 500; /* Medium */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../assets/fonts/static/Inconsolata-Bold.ttf') format('truetype');
+    font-weight: 700; /* Bold */
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inconsolata';
+    src: url('../assets/fonts/static/Inconsolata-ExtraBold.ttf') format('truetype');
+    font-weight: 800; /* ExtraBold */
+    font-style: normal;
+    font-display: swap;
 }
 
 body {
-    font-family: var(--font-family-base);
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
     line-height: 1.6;
-    margin: 20px;
-    background-color: var(--neutral-300); /* Using a neutral color for the background */
-    color: var(--neutral-900); /* Using a dark neutral color for text */
+    margin: 0;
+    background-image: url('./assets/images/background-mobile.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    color: var(--neutral-0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,122 +63,236 @@ body {
 }
 
 .container {
-    background-color: var(--neutral-0);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 1440px; /* Using the desktop design width as max-width */
     display: flex;
     flex-direction: column;
-    gap: 30px;
-}
-
-.form-section,
-.ticket-section {
+    align-items: stretch;
     padding: 20px;
-    border: 1px solid var(--neutral-500); /* Using a neutral color for the border */
-    border-radius: 6px;
+    width: 90%;
+    max-width: 1200px;
 }
 
-.form-section h1,
-.ticket-section h2 {
-    color: var(--neutral-700); /* Using a darker neutral color for headings */
-    margin-bottom: 20px;
+.form-section {
+    background: linear-gradient(180deg, var(--gradient-dark-start) 0%, var(--gradient-dark-end) 100%);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative; /* For positioning the bottom pattern */
+    overflow: hidden; /* To contain the pattern if needed */
+}
+
+.logo-area {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-full {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+}
+
+h1 {
+    color: var(--neutral-0);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.form-description {
+    color: var(--neutral-300);
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+
+.upload-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.upload-group label {
+    color: var(--neutral-0);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-info {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.upload-area {
+    border: 2px dashed var(--neutral-500);
+    border-radius: 8px;
+    padding: 20px;
+    cursor: pointer;
     text-align: center;
 }
 
+.upload-icon {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.upload-icon img {
+    width: 2rem;
+    height: auto;
+    filter: invert(60%) sepia(30%) saturate(200%) hue-rotate(190deg) brightness(90%) contrast(90%);
+}
+
+.upload-area p {
+    color: var(--neutral-300);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.upload-link {
+    color: var(--orange-500);
+    text-decoration: underline;
+}
+
+.upload-info {
+    color: var(--neutral-500);
+    font-size: 0.8rem;
+    margin-top: 10px;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 500; /* Using one of the specified font weights */
-    color: var(--neutral-700);
-    font-size: 20px; /* Applying the label font size */
+    color: var(--neutral-0);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.icon-github {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    margin-left: 5px;
 }
 
 .form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="file"] {
+.form-group input[type="email"] {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--neutral-0);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    padding: 12px;
     width: 100%;
-    padding: 10px;
-    border: 1px solid var(--neutral-300); /* Using a lighter neutral color for input borders */
-    border-radius: 4px;
     box-sizing: border-box;
-    font-size: 16px;
-    font-family: var(--font-family-base); /* Apply the specified font family */
-    font-weight: 400; /* Using one of the specified font weights */
+    font-size: 1rem;
+    font-family: 'Inconsolata', monospace;
 }
 
-.form-group input[type="file"] {
-    padding: 5px;
+.form-group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
 }
 
-.error-message {
-    color: var(--orange-500); /* Using the orange color for error messages */
-    font-size: 0.9em;
-    margin-top: 5px;
+.form-group input:focus {
+    outline: none;
+    border-color: var(--orange-500);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 button[type="submit"] {
     background-color: var(--orange-500);
     color: var(--neutral-0);
-    padding: 12px 20px;
+    padding: 15px 30px;
     border: none;
-    border-radius: 4px;
+    border-radius: 25px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.1rem;
     transition: background-color 0.3s ease;
-    width: 100%;
-    font-family: var(--font-family-base); /* Apply the specified font family */
-    font-weight: 700; /* Using one of the specified font weights */
+    width: auto;
+    display: block;
+    margin: 30px auto 0;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 700;
 }
 
 button[type="submit"]:hover {
     background-color: var(--orange-700);
 }
 
-#ticket-preview {
-    background-color: var(--neutral-0); /* Keeping the ticket preview white */
-    padding: 20px;
-    border-radius: 6px;
+.ticket-section {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 30px;
     text-align: center;
-    border: 1px solid var(--neutral-500); /* Adding a border to the preview */
+    color: var(--neutral-900);
+    display: none; /* Hidden by default */
+    position: relative; /* For positioning ticket pattern */
+    overflow: hidden;
 }
 
-/* Basic styling for the generated ticket */
-.generated-ticket {
-    background-color: var(--neutral-0);
-    border: 1px solid var(--neutral-500);
-    border-radius: 6px;
-    padding: 20px;
-    margin-bottom: 15px;
-    text-align: left;
-    font-family: var(--font-family-base); /* Apply the specified font family */
-    font-weight: 400;
-}
-
-.ticket-info {
-    margin-bottom: 10px;
-    font-size: 18px; /* Adjusting the info text size */
-}
-
-.ticket-info strong {
-    font-weight: 700; /* Using a stronger weight for labels in the ticket */
-    margin-right: 5px;
+.ticket-section h2 {
     color: var(--neutral-700);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+#ticket-preview {
+    background-color: var(--neutral-0);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.generated-ticket {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.event-info h3 {
+    color: var(--orange-500);
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.event-details {
+    color: var(--neutral-500);
+    font-size: 0.8rem;
+    margin-bottom: 10px;
 }
 
 .avatar-container {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 10px auto;
-    border: 2px solid var(--neutral-500); /* Adding a border to the avatar */
+    margin-right: 10px;
+    float: left;
 }
 
 .avatar-container img {
@@ -151,64 +301,105 @@ button[type="submit"]:hover {
     object-fit: cover;
 }
 
+.user-name {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-left: 60px;
+    margin-bottom: 2px;
+}
+
+.user-handle {
+    color: var(--neutral-500);
+    font-size: 0.75rem;
+    margin-left: 60px;
+    margin-bottom: 8px;
+}
+
+.ticket-number {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.7rem;
+    color: var(--neutral-500);
+    transform: rotate(0);
+}
+
+.generated-ticket::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.pattern-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1; /* Place behind the form content */
+}
+
+.pattern-bottom img {
+    width: 100%;
+    height: auto;
+    display: none; /* Hide all by default */
+}
+
+.pattern-bottom img.mobile {
+    display: block;
+}
+
+.pattern-ticket {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
 /* Responsive adjustments */
 @media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        gap: 40px;
-        align-items: flex-start;
+    body {
+        background-image: url('./assets/images/background-tablet.png');
     }
 
-    .form-section,
-    .ticket-section {
-        flex: 1;
+    .container {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        padding: 40px;
+        gap: 40px;
+    }
+
+    .form-section {
+        max-width: 400px;
+        padding: 40px;
+        text-align: left;
+        margin-bottom: 0;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .upload-group {
+        text-align: left;
     }
 
     button[type="submit"] {
         width: auto;
-        max-width: 200px;
+        min-width: 200px;
+        margin-left: 0;
     }
 
-    #ticket-preview {
-        min-height: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    .ticket-section {
+        flex: 1;
+        margin-top: 0;
+        padding: 40px;
+        text-align: left;
     }
 
-    #ticket-preview p {
-        margin: 0;
-        font-family: var(--font-family-base);
-        font-weight: 400;
-        font-size: 1.2em;
-        color: var(--neutral-700);
-    }
-}
-
-/* Mobile specific adjustments (if needed) */
-@media (max-width: 375px) {
-    .container {
-        width: 95%; /* Adjust container width for smaller screens */
-        margin: 15px;
-    }
-
-    .form-section h1,
     .ticket-section h2 {
-        font-size: 1.8em; /* Slightly smaller headings on mobile */
+        font-size: 2rem;
     }
-
-    .form-group label {
-        font-size: 18px; /* Slightly smaller labels on mobile */
-    }
-
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="file"] {
-        font-size: 14px; /* Slightly smaller input text on mobile */
-    }
-
-    .ticket-info {
-        font-size: 16px; /* Slightly smaller ticket info on mobile */
-    }
-}
