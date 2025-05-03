@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailError = document.getElementById('email-error');
     const avatarError = document.getElementById('avatar-error');
     const githubError = document.getElementById('github-error');
+    const congratsMessage = document.querySelector('.congrats-message');
+    const userEmailSpan = document.getElementById('user-email');
+    const ticketAvatarImg = document.getElementById('ticket-avatar');
+    const userNameTicket = document.querySelector('.user-name-ticket');
+    const userHandleTicket = document.querySelector('.user-handle-ticket');
+    const ticketNumberDisplay = document.getElementById('ticket-number');
 
     // Function to validate name
     function validateName(name) {
@@ -57,65 +63,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to generate the ticket preview
     function generateTicket(name, email, github, avatarFile) {
-        ticketPreview.innerHTML = '';
-
-        const ticketDiv = document.createElement('div');
-        ticketDiv.classList.add('generated-ticket');
-
-        const eventInfo = document.createElement('div');
-        eventInfo.classList.add('event-info');
-        const eventName = document.createElement('h3');
-        eventName.textContent = 'Coding Conf';
-        eventInfo.appendChild(eventName);
-        ticketDiv.appendChild(eventInfo);
-
-        const eventDetails = document.createElement('p');
-        eventDetails.classList.add('event-details');
-        eventDetails.textContent = 'Jan 31, 2025 / Kampala, Uganda'; // Updated location
-        ticketDiv.appendChild(eventDetails);
+        congratsMessage.textContent = `Congrats, ${name}! Your ticket is ready.`;
+        userEmailSpan.textContent = email;
+        userNameTicket.textContent = name;
+        userHandleTicket.textContent = `@${github}`;
+        ticketNumberDisplay.textContent = `#${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`;
 
         if (avatarFile) {
             const reader = new FileReader();
             reader.onload = (event) => {
-                const avatarContainer = document.createElement('div');
-                avatarContainer.classList.add('avatar-container');
-                const avatarImg = document.createElement('img');
-                avatarImg.src = event.target.result;
-                avatarImg.alt = 'User Avatar';
-                avatarContainer.appendChild(avatarImg);
-                ticketDiv.appendChild(avatarContainer);
-
-                const nameElement = document.createElement('p');
-                nameElement.classList.add('user-name');
-                nameElement.textContent = name;
-                ticketDiv.appendChild(nameElement);
-
-                const handleElement = document.createElement('p');
-                handleElement.classList.add('user-handle');
-                handleElement.textContent = `@${github}`;
-                ticketDiv.appendChild(handleElement);
-
-                ticketPreview.appendChild(ticketDiv);
+                ticketAvatarImg.src = event.target.result;
+                ticketAvatarImg.style.display = 'block'; // Ensure image is visible
             };
             reader.readAsDataURL(avatarFile);
         } else {
-            const nameElement = document.createElement('p');
-            nameElement.classList.add('user-name');
-            nameElement.textContent = name;
-            ticketDiv.appendChild(nameElement);
-
-            const handleElement = document.createElement('p');
-            handleElement.classList.add('user-handle');
-            handleElement.textContent = `@${github}`;
-            ticketDiv.appendChild(handleElement);
-
-            ticketPreview.appendChild(ticketDiv);
+            ticketAvatarImg.style.display = 'none'; // Hide avatar if no file
+            ticketAvatarImg.src = '';
         }
-
-        const ticketNumber = document.createElement('p');
-        ticketNumber.classList.add('ticket-number');
-        ticketNumber.textContent = `#${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`; // Basic random ticket number
-        ticketDiv.appendChild(ticketNumber);
     }
 
     // Event listener for form submission
