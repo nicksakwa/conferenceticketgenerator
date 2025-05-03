@@ -3,37 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conference Ticket Generator</title>
+    <title>Coding Conf Ticket Generator</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
 </head>
 <body>
     <main class="container">
         <section class="form-section">
-            <h1>Generate Your Conference Ticket</h1>
+            <div class="logo-area">
+                <img src="./assets/images/logo-full.png" alt="Coding Conf Logo" class="logo-full">
+            </div>
+
+            <h1>Your Journey to Coding Conf 2025 Starts Here!</h1>
+            <p class="form-description">Secure your spot at next year's biggest coding conference.</p>
+
+            <div class="form-group upload-group">
+                <label for="avatar">Upload Avatar <img src="./assets/images/icon-info.png" alt="Info" class="icon-info"></label>
+                <div class="upload-area">
+                    <input type="file" id="avatar" name="avatar" accept="image/*" class="visually-hidden">
+                    <div class="upload-icon">
+                        <img src="./assets/images/icon-upload.png" alt="Upload Icon">
+                    </div>
+                    <p>Drag and drop or <label for="avatar" class="upload-link">click to upload</label></p>
+                    <p class="upload-info">Upload your photo (PNG or JPG, max size: 2MB)</p>
+                    <div class="error-message" id="avatar-error"></div>
+                </div>
+            </div>
+
             <form id="ticket-form">
                 <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Full Name" required>
                     <div class="error-message" id="name-error"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
                     <div class="error-message" id="email-error"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="avatar">Upload Avatar (optional):</label>
-                    <input type="file" id="avatar" name="avatar" accept="image/*">
-                    <div class="error-message" id="avatar-error"></div>
+                    <label for="github">Github Username <img src="./assets/images/icon-github.png" alt="Github Icon" class="icon-github"></label>
+                    <input type="text" id="github" name="github" placeholder="@yourusername">
+                    <div class="error-message" id="github-error"></div>
                 </div>
 
-                <button type="submit">Generate Ticket</button>
+                <button type="submit">Generate My Ticket</button>
             </form>
+
+            <div class="pattern-bottom">
+                <img src="./assets/images/pattern-squiggly-line-bottom-desktop.svg" alt="" class="desktop">
+                <img src="./assets/images/pattern-squiggly-line-bottom-tablet.svg" alt="" class="tablet">
+                <img src="./assets/images/pattern-squiggly-line-bottom-mobile.svg" alt="" class="mobile">
+            </div>
         </section>
 
         <section class="ticket-section" aria-live="polite">
@@ -41,6 +64,7 @@
             <div id="ticket-preview">
                 <p>Please fill out the form to generate your ticket.</p>
             </div>
+            <img src="./assets/images/pattern-ticket.svg" alt="" class="pattern-ticket">
         </section>
     </main>
 
