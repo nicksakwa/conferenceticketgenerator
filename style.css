@@ -77,8 +77,8 @@ body {
     border-radius: 10px;
     text-align: center;
     margin-bottom: 30px;
-    position: relative; /* For positioning the bottom pattern */
-    overflow: hidden; /* To contain the pattern if needed */
+    position: relative;
+    overflow: hidden;
 }
 
 .logo-area {
@@ -246,8 +246,8 @@ button[type="submit"]:hover {
     margin-top: 30px;
     text-align: center;
     color: var(--neutral-900);
-    display: none; /* Hidden by default */
-    position: relative; /* For positioning ticket pattern */
+    display: none;
+    position: relative;
     overflow: hidden;
 }
 
@@ -258,41 +258,78 @@ button[type="submit"]:hover {
 }
 
 #ticket-preview {
-    background-color: var(--neutral-0);
-    border-radius: 8px;
+    background-color: var(--neutral-900); /* Dark background for the ticket */
+    border-radius: 10px;
     padding: 20px;
     text-align: left;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
 }
 
-.generated-ticket {
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    margin-bottom: 10px;
-    font-size: 0.9rem;
+.ticket-inner {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
 }
 
-.event-info h3 {
+
+.congrats-message {
     color: var(--orange-500);
     font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: 5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.event-details {
+.email-message {
+    color: var(--neutral-300);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.ticket-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-mark-ticket {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.ticket-header h3 {
+    color: var(--neutral-900);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.event-date-location {
     color: var(--neutral-500);
-    font-size: 0.8rem;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .avatar-container {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 10px;
-    float: left;
+    margin-right: 20px;
+    border: 2px solid var(--orange-500);
 }
 
 .avatar-container img {
@@ -301,27 +338,26 @@ button[type="submit"]:hover {
     object-fit: cover;
 }
 
-.user-name {
-    font-weight: bold;
-    font-size: 1rem;
-    margin-left: 60px;
-    margin-bottom: 2px;
+.user-name-ticket {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--neutral-900);
+    margin-bottom: 5px;
 }
 
-.user-handle {
+.user-handle-ticket {
     color: var(--neutral-500);
-    font-size: 0.75rem;
-    margin-left: 60px;
-    margin-bottom: 8px;
+    font-size: 0.8rem;
 }
 
-.ticket-number {
+.ticket-number-vertical {
     position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 0.7rem;
-    color: var(--neutral-500);
-    transform: rotate(0);
+    top: 20px;
+    right: -40px;
+    font-size: 1.2rem;
+    color: var(--neutral-0);
+    transform: rotate(90deg);
+    font-weight: 700;
 }
 
 .generated-ticket::after {
@@ -336,13 +372,13 @@ button[type="submit"]:hover {
     bottom: 0;
     width: 100%;
     height: auto;
-    z-index: -1; /* Place behind the form content */
+    z-index: -1;
 }
 
 .pattern-bottom img {
     width: 100%;
     height: auto;
-    display: none; /* Hide all by default */
+    display: none;
 }
 
 .pattern-bottom img.mobile {
@@ -356,7 +392,9 @@ button[type="submit"]:hover {
     width: 100%;
     height: auto;
     z-index: -1;
+    opacity: 0.1;
 }
+
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
@@ -402,5 +440,23 @@ button[type="submit"]:hover {
 
     .ticket-section h2 {
         font-size: 2rem;
+    }
+    .pattern-bottom img.mobile {
+        display: none;
+    }
+    .pattern-bottom img.tablet{
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        background-image: url('./assets/images/background-desktop.png');
+    }
+    .pattern-bottom img.tablet {
+        display: none;
+    }
+    .pattern-bottom img.desktop {
+        display: block;
     }
 }
