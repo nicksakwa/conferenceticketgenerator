@@ -61,8 +61,28 @@
 
         <section class="ticket-section" aria-live="polite">
             <h2>Your Ticket</h2>
+            <div id="ticket-confirmation">
+                <p class="congrats-message"></p>
+                <p class="email-message">We've emailed your ticket to <span id="user-email"></span> and will send updates in the run up to the event.</p>
+            </div>
             <div id="ticket-preview">
-                <p>Please fill out the form to generate your ticket.</p>
+                <div class="ticket-inner">
+                    <div class="ticket-header">
+                        <img src="./assets/images/logo-mark.svg" alt="Coding Conf Mark" class="logo-mark-ticket">
+                        <h3>Coding Conf</h3>
+                    </div>
+                    <p class="event-date-location">Jan 31, 2025 / Austin, TX</p>
+                    <div class="user-info">
+                        <div class="avatar-container">
+                            <img id="ticket-avatar" src="" alt="User Avatar">
+                        </div>
+                        <p class="user-name-ticket"></p>
+                        <p class="user-handle-ticket"></p>
+                    </div>
+                    <div class="ticket-number-vertical">
+                        <p id="ticket-number">#81689</p>
+                    </div>
+                </div>
             </div>
             <img src="./assets/images/pattern-ticket.svg" alt="" class="pattern-ticket">
         </section>
