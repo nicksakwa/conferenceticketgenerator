@@ -2,39 +2,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const ticketForm = document.getElementById('ticket-form');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
+    const githubInput = document.getElementById('github');
     const avatarInput = document.getElementById('avatar');
+    const ticketSection = document.querySelector('.ticket-section');
     const ticketPreview = document.getElementById('ticket-preview');
     const nameError = document.getElementById('name-error');
     const emailError = document.getElementById('email-error');
     const avatarError = document.getElementById('avatar-error');
+    const githubError = document.getElementById('github-error');
 
-    ticketForm.addEventListener('submit', (event) => {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Reset error messages
-        nameError.textContent = '';
-        emailError.textContent = '';
-        avatarError.textContent = '';
-
-        // Perform validation
-        const isNameValid = validateName(nameInput.value);
-        const isEmailValid = validateEmail(emailInput.value);
-        const isAvatarValid = validateAvatar(avatarInput);
-
-        if (isNameValid && isEmailValid && isAvatarValid) {
-            // Generate the ticket
-            generateTicket(nameInput.value, emailInput.value, avatarInput.files[0]);
-        }
-    });
-
+    // Function to validate name
     function validateName(name) {
         if (!name.trim()) {
-            nameError.textContent = 'Please enter your name.';
+            nameError.textContent = 'Please enter your full name.';
             return false;
         }
         return true;
     }
 
+    // Function to validate email
     function validateEmail(email) {
         if (!email.trim()) {
             emailError.textContent = 'Please enter your email address.';
@@ -48,11 +34,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
     }
 
+    // Function to validate avatar
     function validateAvatar(avatarInput) {
         const file = avatarInput.files[0];
         if (file) {
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; // Example allowed types
-            const maxSizeMB = 2; // Example max size in MB
+            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            const maxSizeMB = 2;
             const maxSizeKB = maxSizeMB * 1024;
 
             if (!allowedTypes.includes(file.type)) {
@@ -65,25 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 return false;
             }
         }
-        return true; // Avatar is optional, so no file is also valid
+        return true; // Avatar is optional
     }
 
-    function generateTicket(name, email, avatarFile) {
-        ticketPreview.innerHTML = ''; // Clear any previous ticket
+    // Function to generate the ticket preview
+    function generateTicket(name, email, github, avatarFile) {
+        ticketPreview.innerHTML = '';
 
         const ticketDiv = document.createElement('div');
         ticketDiv.classList.add('generated-ticket');
 
-        const nameElement = document.createElement('p');
-        nameElement.classList.add('ticket-info');
-        nameElement.innerHTML = `<strong>Name:</strong> ${name}`;
+        const eventInfo = document.createElement('div');
+        eventInfo.classList.add('event-info');
+        const eventName = document.createElement('h3');
+        eventName.textContent = 'Coding Conf';
+        eventInfo.appendChild(eventName);
+        ticketDiv.appendChild(eventInfo);
 
-        const emailElement = document.createElement('p');
-        emailElement.classList.add('ticket-info');
-        emailElement.innerHTML = `<strong>Email:</strong> ${email}`;
-
-        ticketDiv.appendChild(nameElement);
-        ticketDiv.appendChild(emailElement);
+        const eventDetails = document.createElement('p');
+        eventDetails.classList.add('event-details');
+        eventDetails.textContent = 'Jan 31, 2025 / Kampala, Uganda'; // Updated location
+        ticketDiv.appendChild(eventDetails);
 
         if (avatarFile) {
             const reader = new FileReader();
@@ -94,12 +83,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 avatarImg.src = event.target.result;
                 avatarImg.alt = 'User Avatar';
                 avatarContainer.appendChild(avatarImg);
-                ticketDiv.prepend(avatarContainer); // Add avatar at the top of the ticket
+                ticketDiv.appendChild(avatarContainer);
+
+                const nameElement = document.createElement('p');
+                nameElement.classList.add('user-name');
+                nameElement.textContent = name;
+                ticketDiv.appendChild(nameElement);
+
+                const handleElement = document.createElement('p');
+                handleElement.classList.add('user-handle');
+                handleElement.textContent = `@${github}`;
+                ticketDiv.appendChild(handleElement);
+
                 ticketPreview.appendChild(ticketDiv);
             };
             reader.readAsDataURL(avatarFile);
         } else {
+            const nameElement = document.createElement('p');
+            nameElement.classList.add('user-name');
+            nameElement.textContent = name;
+            ticketDiv.appendChild(nameElement);
+
+            const handleElement = document.createElement('p');
+            handleElement.classList.add('user-handle');
+            handleElement.textContent = `@${github}`;
+            ticketDiv.appendChild(handleElement);
+
             ticketPreview.appendChild(ticketDiv);
         }
+
+        const ticketNumber = document.createElement('p');
+        ticketNumber.classList.add('ticket-number');
+        ticketNumber.textContent = `#${Math.floor(Math.random() * 1000000).toString().padStart(6, '0')}`; // Basic random ticket number
+        ticketDiv.appendChild(ticketNumber);
+    }
+
+    // Event listener for form submission
+    ticketForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        nameError.textContent = '';
+        emailError.textContent = '';
+        avatarError.textContent = '';
+        githubError.textContent = '';
+
+        const isNameValid = validateName(nameInput.value);
+        const isEmailValid = validateEmail(emailInput.value);
+        const isAvatarValid = validateAvatar(avatarInput);
+        const isGithubValid = true; // Basic validation for now
+
+        if (isNameValid && isEmailValid && isAvatarValid && isGithubValid) {
+            generateTicket(nameInput.value, emailInput.value, githubInput.value, avatarInput.files[0]);
+            ticketSection.style.display = 'block';
+            // Scroll to the ticket section
+            ticketSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    // Basic handling for the upload area click to trigger file input
+    const uploadArea = document.querySelector('.upload-area');
+    const fileInput = document.getElementById('avatar');
+
+    if (uploadArea && fileInput) {
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                // You could add some visual feedback here to show a file has been selected
+            }
+        });
     }
 });
