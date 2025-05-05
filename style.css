@@ -298,7 +298,8 @@ button[type="submit"]:hover {
 }
 
 #ticket-preview {
-    background-color: #191435 !important; /* Dark blue background for the ticket */
+    background-color: transparent !important; /* Make the background transparent */
+    border: none !important; /* Remove the border */
     border-radius: 10px;
     padding: 20px;
     text-align: left;
@@ -308,13 +309,16 @@ button[type="submit"]:hover {
     max-width: 500px;
     position: relative;
     z-index: 1;
-    color: var(--neutral-0); /* Default text color to white for readability */
+    color: var(--neutral-0); /* Default text color to white */
 }
 
 .ticket-inner {
     background-color: transparent !important; /* Ensure inner is transparent */
     border-radius: 8px;
-    background-image: none !important; /* Remove any background images */
+    background-image: url('./assets/images/pattern-ticket.svg') !important;
+    background-repeat: repeat; /* Adjust as needed */
+    background-size: contain; /* Adjust as needed */
+    background-position: center center; /* Adjust as needed */
     padding: 20px;
 }
 
@@ -412,13 +416,13 @@ button[type="submit"]:hover {
 }
 
 .pattern-ticket {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    z-index: -1;
-    opacity: 0.1;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        z-index: -1;
+        opacity: 0.1;
 }
 
 
