@@ -239,26 +239,66 @@ button[type="submit"]:hover {
 }
 
 .ticket-section {
-    background-color: #f8f8f8;
-    border: 1px solid #eee;
     padding: 30px;
     border-radius: 10px;
     margin-top: 30px;
     text-align: center;
-    color: var(--neutral-900);
+    color: var(--neutral-0); /* Default text color to white */
     display: none;
     position: relative;
     overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+
+/* Apply different background images for different screen sizes */
+@media (max-width: 767px) { /* Mobile */
+    .ticket-section {
+        background-image: url('./assets/images/background-mobile.png'); /* Use the mobile background */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* Tablet */
+    .ticket-section {
+        background-image: url('./assets/images/background-tablet.png'); /* Use the tablet background */
+    }
+}
+
+@media (min-width: 1024px) { /* Desktop */
+    .ticket-section {
+        background-image: url('./assets/images/background-desktop.png'); /* Use the desktop background */
+    }
 }
 
 .ticket-section h2 {
-    color: var(--neutral-700);
+    color: var(--neutral-0); /* White */
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
 
+#ticket-confirmation {
+    color: var(--neutral-0); /* White */
+    margin-bottom: 20px;
+}
+
+.congrats-message {
+    color: #FF6B6B; /* Red color for "Congrats..." */
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.email-message {
+    color: #FF6B6B; /* Red color for the email text */
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 #ticket-preview {
-    background-color: var(--neutral-900) !important;
+    background-color: #fff; /* Inner white ticket */
     border-radius: 10px;
     padding: 20px;
     text-align: left;
@@ -271,31 +311,14 @@ button[type="submit"]:hover {
 }
 
 .ticket-inner {
-    background-color: #fff;
+    background-color: transparent; /* Make inner transparent */
     border-radius: 8px;
     padding: 20px;
     background-image: url('./assets/images/pattern-ticket.svg');
-    background-repeat: repeat; /* Adjust as needed: no-repeat, space, etc. */
-    background-size: contain; /* Adjust as needed: cover, auto, specific values */
+    background-repeat: repeat; /* Adjust as needed */
+    background-size: contain; /* Adjust as needed */
     background-position: center center; /* Adjust as needed */
 }
-
-
-.congrats-message {
-    color: var(--orange-500);
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.email-message {
-    color: var(--neutral-300);
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
 
 .ticket-header {
     display: flex;
@@ -307,6 +330,7 @@ button[type="submit"]:hover {
     width: 50px;
     height: auto;
     margin-right: 10px;
+    filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(190deg) brightness(95%) contrast(95%); /* Adjust color to dark */
 }
 
 .ticket-header h3 {
@@ -316,7 +340,7 @@ button[type="submit"]:hover {
 }
 
 .event-date-location {
-    color: var(--neutral-500);
+    color: var(--neutral-700);
     font-size: 0.9rem;
     margin-bottom: 20px;
 }
