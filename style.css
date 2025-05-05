@@ -51,10 +51,7 @@ body {
     font-weight: 400;
     line-height: 1.6;
     margin: 0;
-    background-image: url('./assets/images/background-mobile.png');
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
+    background-color: var(--neutral-900); /* Set the dark blue canvas background */
     color: var(--neutral-0);
     display: flex;
     justify-content: center;
@@ -247,29 +244,11 @@ button[type="submit"]:hover {
     display: none;
     position: relative;
     overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-size: cover;
+    background-color: transparent !important; /* Make the ticket section transparent */
+    background-image: none !important; /* Remove any background images */
 }
 
-/* Apply different background images for different screen sizes */
-@media (max-width: 767px) { /* Mobile */
-    .ticket-section {
-        background-image: url('./assets/images/background-mobile.png'); /* Use the mobile background */
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) { /* Tablet */
-    .ticket-section {
-        background-image: url('./assets/images/background-tablet.png'); /* Use the tablet background */
-    }
-}
-
-@media (min-width: 1024px) { /* Desktop */
-    .ticket-section {
-        background-image: url('./assets/images/background-desktop.png'); /* Use the desktop background */
-    }
-}
+/* No need for media queries for background images on .ticket-section anymore */
 
 .ticket-section h2 {
     color: var(--neutral-0); /* White */
@@ -298,7 +277,7 @@ button[type="submit"]:hover {
 }
 
 #ticket-preview {
-    background-color: transparent !important; /* Make the background transparent */
+    background-color: transparent !important; /* Make the ticket preview transparent */
     border: none !important; /* Remove the border */
     border-radius: 10px;
     padding: 20px;
@@ -416,20 +395,20 @@ button[type="submit"]:hover {
 }
 
 .pattern-ticket {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: auto;
-        z-index: -1;
-        opacity: 0.1;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    opacity: 0.1;
 }
 
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
     body {
-        background-image: url('./assets/images/background-tablet.png');
+        background-color: var(--neutral-900); /* Ensure dark blue background on larger screens too */
     }
 
     .container {
@@ -466,6 +445,8 @@ button[type="submit"]:hover {
         margin-top: 0;
         padding: 40px;
         text-align: left;
+        background-color: transparent !important; /* Make the ticket section transparent */
+        background-image: none !important; /* Remove any background images */
     }
 
     .ticket-section h2 {
@@ -481,7 +462,7 @@ button[type="submit"]:hover {
 
 @media (min-width: 1024px) {
     body {
-        background-image: url('./assets/images/background-desktop.png');
+        background-color: var(--neutral-900); /* Ensure dark blue background on larger screens too */
     }
     .pattern-bottom img.tablet {
         display: none;
