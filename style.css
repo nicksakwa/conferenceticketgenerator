@@ -298,7 +298,7 @@ button[type="submit"]:hover {
 }
 
 #ticket-preview {
-    background-color: #fff; /* Inner white ticket */
+    background-color: #191435 !important; /* Dark blue background for the ticket */
     border-radius: 10px;
     padding: 20px;
     text-align: left;
@@ -308,16 +308,14 @@ button[type="submit"]:hover {
     max-width: 500px;
     position: relative;
     z-index: 1;
+    color: var(--neutral-0); /* Default text color to white for readability */
 }
 
 .ticket-inner {
-    background-color: transparent; /* Make inner transparent */
+    background-color: transparent !important; /* Ensure inner is transparent */
     border-radius: 8px;
+    background-image: none !important; /* Remove any background images */
     padding: 20px;
-    background-image: url('./assets/images/pattern-ticket.svg');
-    background-repeat: repeat; /* Adjust as needed */
-    background-size: contain; /* Adjust as needed */
-    background-position: center center; /* Adjust as needed */
 }
 
 .ticket-header {
@@ -330,17 +328,17 @@ button[type="submit"]:hover {
     width: 50px;
     height: auto;
     margin-right: 10px;
-    filter: invert(20%) sepia(90%) saturate(2000%) hue-rotate(190deg) brightness(95%) contrast(95%); /* Adjust color to dark */
+    filter: invert(100%) !important; /* Make the logo white */
 }
 
 .ticket-header h3 {
-    color: var(--neutral-900);
+    color: var(--neutral-0) !important; /* White */
     font-size: 1.5rem;
     margin: 0;
 }
 
 .event-date-location {
-    color: var(--neutral-700);
+    color: var(--neutral-300) !important; /* Light gray */
     font-size: 0.9rem;
     margin-bottom: 20px;
 }
@@ -369,21 +367,21 @@ button[type="submit"]:hover {
 .user-name-ticket {
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--neutral-900);
+    color: var(--neutral-0) !important; /* White */
     margin-bottom: 5px;
 }
 
 .user-handle-ticket {
-    color: var(--neutral-500);
+    color: var(--neutral-500) !important; /* Gray */
     font-size: 0.8rem;
 }
 
 .ticket-number-vertical {
+    color: var(--neutral-0) !important; /* White */
     position: absolute;
     top: 20px;
     right: -40px;
     font-size: 1.2rem;
-    color: var(--neutral-0);
     transform: rotate(90deg);
     font-weight: 700;
 }
