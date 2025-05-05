@@ -258,7 +258,7 @@ button[type="submit"]:hover {
 }
 
 #ticket-preview {
-    background-color: var(--neutral-900); /* Dark background for the ticket */
+    background-color: var(--neutral-900) !important;
     border-radius: 10px;
     padding: 20px;
     text-align: left;
@@ -274,6 +274,10 @@ button[type="submit"]:hover {
     background-color: #fff;
     border-radius: 8px;
     padding: 20px;
+    background-image: url('./assets/images/pattern-ticket.svg');
+    background-repeat: repeat; /* Adjust as needed: no-repeat, space, etc. */
+    background-size: contain; /* Adjust as needed: cover, auto, specific values */
+    background-position: center center; /* Adjust as needed */
 }
 
 
