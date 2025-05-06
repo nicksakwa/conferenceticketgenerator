@@ -341,11 +341,11 @@ button[type="submit"]:hover {
 }
 
 .avatar-container {
-    width: 60px; /* Smaller avatar */
-    height: 60px; /* Smaller avatar */
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 15px; /* Reduced margin */
+    margin-right: 15px;
     border: 2px solid var(--orange-500);
 }
 
@@ -353,7 +353,7 @@ button[type="submit"]:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Ensure the image itself is also clipped to an oval */
+    border-radius: 50%; /* Make sure the image is also an oval */
 }
 
 .user-details {
@@ -482,3 +482,5 @@ button[type="submit"]:hover {
 
     .upload-group {
         text-align: left;
+    }
+}
