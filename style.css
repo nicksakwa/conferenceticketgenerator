@@ -294,58 +294,57 @@ button[type="submit"]:hover {
 .ticket-inner {
     display: flex; /* Enable flexbox for the inner container */
     position: relative; /* For positioning the vertical number */
-    padding: 20px;
+    padding: 15px; /* Slightly reduce overall padding */
     border-radius: 8px;
     background-image: url('./assets/images/pattern-ticket.svg') !important;
     background-repeat: repeat; /* Adjust as needed */
     background-size: contain; /* Adjust as needed */
     background-position: center center; /* Adjust as needed */
-    justify-content: space-between; /* Distribute main content and number */
-    align-items: center; /* Vertically align items in the inner container */
-}
-
-.ticket-content {
-    flex-grow: 1; /* Allow the main content to take up available space */
-    margin-right: 20px; /* Add some spacing between content and number */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Left-align items */
 }
 
 .ticket-header {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Reduced margin */
+    margin-bottom: 8px; /* Further reduce margin */
+    width: 100%; /* Ensure it takes full width */
 }
 
 .logo-mark-ticket {
-    width: 40px; /* Slightly smaller logo */
+    width: 25px; /* Even smaller logo */
     height: auto;
-    margin-right: 10px;
+    margin-right: 8px; /* Adjust spacing */
     filter: invert(100%) !important; /* Make the logo white */
 }
 
 .ticket-header h3 {
     color: var(--neutral-0) !important; /* White */
-    font-size: 1.3rem; /* Slightly smaller title */
+    font-size: 1rem; /* Even smaller title */
     margin: 0;
+    flex-grow: 1; /* Allow title to take more space */
 }
 
 .event-date-location {
     color: var(--neutral-300) !important; /* Light gray */
-    font-size: 0.8rem; /* Smaller font */
-    margin-bottom: 15px; /* Reduced margin */
+    font-size: 0.7rem; /* Even smaller font */
+    margin-bottom: 8px;
+    width: 100%; /* Ensure it takes full width */
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    margin-bottom: 15px; /* Reduced margin */
+    margin-bottom: 10px;
+    width: 100%; /* Ensure it takes full width */
 }
 
 .avatar-container {
-    width: 60px;
-    height: 60px;
+    width: 35px; /* Even smaller avatar */
+    height: 35px; /* Even smaller avatar */
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 15px;
+    margin-right: 8px;
     border: 2px solid var(--orange-500);
 }
 
@@ -353,134 +352,102 @@ button[type="submit"]:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%; /* Make sure the image is also an oval */
+    border-radius: 50%; /* Force the image to be a circle */
 }
 
 .user-details {
     display: flex;
     flex-direction: column; /* Stack name and handle vertically */
+    align-items: flex-start; /* Left-align user details */
+    flex-grow: 1; /* Allow details to take more space */
 }
 
 .user-name-ticket {
     font-weight: 700;
-    font-size: 1rem; /* Smaller name */
+    font-size: 0.85rem; /* Even smaller name */
     color: var(--neutral-0) !important; /* White */
-    margin-bottom: 3px; /* Less space */
+    margin-bottom: 1px;
 }
 
 .user-handle-ticket {
     color: var(--neutral-500) !important; /* Gray */
-    font-size: 0.7rem; /* Smaller handle */
+    font-size: 0.6rem; /* Even smaller handle */
 }
 
 .ticket-number-vertical {
     color: var(--neutral-0) !important; /* White */
-    font-size: 1rem; /* Adjust font size */
+    font-size: 0.9rem; /* Slightly smaller number */
     font-weight: 700;
-    /* Reset previous positioning */
-    position: static;
-    transform: none;
-    /* New positioning for the right side */
-    writing-mode: vertical-rl; /* Make text vertical, right to left */
-    text-orientation: upright; /* Ensure letters are upright */
-    /* Adjust margins and padding as needed */
-    padding: 10px 5px; /* Add some padding */
+    text-align: center; /* Center the number */
+    padding: 8px 0; /* Adjust padding */
+    border-top: 1px dashed var(--neutral-500); /* Separator */
+    margin-top: 10px; /* Adjust margin */
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
 /* Mobile adjustments (ensure consistency) */
 @media (max-width: 767px) {
     #ticket-preview .ticket-inner {
-        flex-direction: column; /* Stack elements vertically */
-        align-items: center;
-        justify-content: flex-start; /* Align items at the start */
+        padding: 15px; /* Adjust padding */
     }
 
-    #ticket-preview .ticket-content {
-        margin-right: 0;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 15px; /* Add space below the main content */
+    /* Reset centering and ensure left alignment for text content */
+    #ticket-preview .ticket-header,
+    .event-date-location,
+    .user-info,
+    .user-details,
+    .ticket-number-vertical {
+        text-align: left;
     }
 
     #ticket-preview .ticket-header {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        margin-bottom: 5px; /* Further reduce margin */
     }
 
-    #ticket-preview .logo-mark-ticket {
-        margin-right: 0;
-        margin-bottom: 5px;
-        width: 30px; /* Adjust size for mobile */
+    .logo-mark-ticket {
+        width: 20px; /* Even smaller logo */
+        height: auto;
+        margin-right: 5px;
     }
 
     #ticket-preview .ticket-header h3 {
-        font-size: 1.1rem; /* Adjust size for mobile */
-        margin-bottom: 5px;
-    }
-
-    #ticket-preview .event-date-location {
-        font-size: 0.7rem; /* Adjust size for mobile */
-        margin-bottom: 10px;
-    }
-
-    #ticket-preview .user-info {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #ticket-preview .avatar-container {
-        margin-right: 0;
-        margin-bottom: 10px;
-        width: 50px; /* Adjust size for mobile */
-        height: 50px; /* Adjust size for mobile */
-    }
-
-    #ticket-preview .user-details {
-        align-items: center;
-    }
-
-    #ticket-preview .user-name-ticket {
-        font-size: 1rem; /* Adjust size for mobile */
-        margin-bottom: 2px;
-    }
-
-    #ticket-preview .user-handle-ticket {
-        font-size: 0.65rem; /* Adjust size for mobile */
-    }
-
-    #ticket-preview .ticket-number-vertical {
-        /* Adjust mobile styling for vertical number */
-        writing-mode: horizontal-tb; /* Revert to horizontal */
-        text-orientation: initial;
-        margin-top: 10px; /* Add space below main content */
-        padding: 5px 10px;
-        border: 1px solid var(--neutral-500); /* Add a border for visibility */
-        border-radius: 5px;
-    }
-}
-
-/* Responsive adjustments for larger screens */
-@media (min-width: 768px) {
-    .container {
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: flex-start;
-        padding: 40px;
-        gap: 40px;
-    }
-
-    .form-section {
-        max-width: 400px;
-        padding: 40px;
-        text-align: left;
+        font-size: 0.9rem; /* Even smaller title */
         margin-bottom: 0;
     }
 
-    h1 {
-        font-size: 2.5rem;
+    .event-date-location {
+        font-size: 0.65rem; /* Even smaller date/location */
+        margin-bottom: 5px;
     }
 
-    .upload-group {
-        text-align: left;
+    .user-info {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .avatar-container {
+        width: 30px; /* Even smaller avatar */
+        height: 30px; /* Even smaller avatar */
+        margin-right: 5px;
+    }
+
+    .user-name-ticket {
+        font-size: 0.8rem; /* Even smaller name */
+        margin-bottom: 1px;
+    }
+
+    .user-handle-ticket {
+        font-size: 0.55rem; /* Even smaller handle */
+    }
+
+    .ticket-number-vertical {
+        font-size: 0.8rem; /* Even smaller number */
+        margin-top: 8px;
+        padding: 5px 0;
+        text-align: center; /* Keep number centered at the bottom */
     }
 }
