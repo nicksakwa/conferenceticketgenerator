@@ -292,23 +292,31 @@ button[type="submit"]:hover {
 }
 
 .ticket-inner {
-    background-color: transparent !important; /* Ensure inner is transparent */
+    display: flex; /* Enable flexbox for the inner container */
+    position: relative; /* For positioning the vertical number */
+    padding: 20px;
     border-radius: 8px;
     background-image: url('./assets/images/pattern-ticket.svg') !important;
     background-repeat: repeat; /* Adjust as needed */
     background-size: contain; /* Adjust as needed */
     background-position: center center; /* Adjust as needed */
-    padding: 20px;
+    justify-content: space-between; /* Distribute main content and number */
+    align-items: center; /* Vertically align items in the inner container */
+}
+
+.ticket-content {
+    flex-grow: 1; /* Allow the main content to take up available space */
+    margin-right: 20px; /* Add some spacing between content and number */
 }
 
 .ticket-header {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Reduced margin */
 }
 
 .logo-mark-ticket {
-    width: 50px;
+    width: 40px; /* Slightly smaller logo */
     height: auto;
     margin-right: 10px;
     filter: invert(100%) !important; /* Make the logo white */
@@ -316,28 +324,28 @@ button[type="submit"]:hover {
 
 .ticket-header h3 {
     color: var(--neutral-0) !important; /* White */
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Slightly smaller title */
     margin: 0;
 }
 
 .event-date-location {
     color: var(--neutral-300) !important; /* Light gray */
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-size: 0.8rem; /* Smaller font */
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .user-info {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced margin */
 }
 
 .avatar-container {
-    width: 80px;
-    height: 80px;
+    width: 60px; /* Smaller avatar */
+    height: 60px; /* Smaller avatar */
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 20px;
+    margin-right: 15px; /* Reduced margin */
     border: 2px solid var(--orange-500);
 }
 
@@ -345,72 +353,114 @@ button[type="submit"]:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%; /* Ensure the image itself is also clipped to an oval */
+}
+
+.user-details {
+    display: flex;
+    flex-direction: column; /* Stack name and handle vertically */
 }
 
 .user-name-ticket {
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Smaller name */
     color: var(--neutral-0) !important; /* White */
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* Less space */
 }
 
 .user-handle-ticket {
     color: var(--neutral-500) !important; /* Gray */
-    font-size: 0.8rem;
+    font-size: 0.7rem; /* Smaller handle */
 }
 
 .ticket-number-vertical {
     color: var(--neutral-0) !important; /* White */
-    position: absolute;
-    top: 20px;
-    right: -40px;
-    font-size: 1.2rem;
-    transform: rotate(90deg);
+    font-size: 1rem; /* Adjust font size */
     font-weight: 700;
+    /* Reset previous positioning */
+    position: static;
+    transform: none;
+    /* New positioning for the right side */
+    writing-mode: vertical-rl; /* Make text vertical, right to left */
+    text-orientation: upright; /* Ensure letters are upright */
+    /* Adjust margins and padding as needed */
+    padding: 10px 5px; /* Add some padding */
 }
 
-.generated-ticket::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.pattern-bottom {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    z-index: -1;
-}
-
-.pattern-bottom img {
-    width: 100%;
-    height: auto;
-    display: none;
-}
-
-.pattern-bottom img.mobile {
-    display: block;
-}
-
-.pattern-ticket {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: auto;
-    z-index: -1;
-    opacity: 0.1;
-}
-
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-    body {
-        background-color: var(--neutral-900); /* Ensure dark blue background on larger screens too */
+/* Mobile adjustments (ensure consistency) */
+@media (max-width: 767px) {
+    #ticket-preview .ticket-inner {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center;
+        justify-content: flex-start; /* Align items at the start */
     }
 
+    #ticket-preview .ticket-content {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 15px; /* Add space below the main content */
+    }
+
+    #ticket-preview .ticket-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #ticket-preview .logo-mark-ticket {
+        margin-right: 0;
+        margin-bottom: 5px;
+        width: 30px; /* Adjust size for mobile */
+    }
+
+    #ticket-preview .ticket-header h3 {
+        font-size: 1.1rem; /* Adjust size for mobile */
+        margin-bottom: 5px;
+    }
+
+    #ticket-preview .event-date-location {
+        font-size: 0.7rem; /* Adjust size for mobile */
+        margin-bottom: 10px;
+    }
+
+    #ticket-preview .user-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #ticket-preview .avatar-container {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 50px; /* Adjust size for mobile */
+        height: 50px; /* Adjust size for mobile */
+    }
+
+    #ticket-preview .user-details {
+        align-items: center;
+    }
+
+    #ticket-preview .user-name-ticket {
+        font-size: 1rem; /* Adjust size for mobile */
+        margin-bottom: 2px;
+    }
+
+    #ticket-preview .user-handle-ticket {
+        font-size: 0.65rem; /* Adjust size for mobile */
+    }
+
+    #ticket-preview .ticket-number-vertical {
+        /* Adjust mobile styling for vertical number */
+        writing-mode: horizontal-tb; /* Revert to horizontal */
+        text-orientation: initial;
+        margin-top: 10px; /* Add space below main content */
+        padding: 5px 10px;
+        border: 1px solid var(--neutral-500); /* Add a border for visibility */
+        border-radius: 5px;
+    }
+}
+
+/* Responsive adjustments for larger screens */
+@media (min-width: 768px) {
     .container {
         flex-direction: row;
         justify-content: space-around;
@@ -432,42 +482,3 @@ button[type="submit"]:hover {
 
     .upload-group {
         text-align: left;
-    }
-
-    button[type="submit"] {
-        width: auto;
-        min-width: 200px;
-        margin-left: 0;
-    }
-
-    .ticket-section {
-        flex: 1;
-        margin-top: 0;
-        padding: 40px;
-        text-align: left;
-        background-color: transparent !important; /* Make the ticket section transparent */
-        background-image: none !important; /* Remove any background images */
-    }
-
-    .ticket-section h2 {
-        font-size: 2rem;
-    }
-    .pattern-bottom img.mobile {
-        display: none;
-    }
-    .pattern-bottom img.tablet{
-        display: block;
-    }
-}
-
-@media (min-width: 1024px) {
-    body {
-        background-color: var(--neutral-900); /* Ensure dark blue background on larger screens too */
-    }
-    .pattern-bottom img.tablet {
-        display: none;
-    }
-    .pattern-bottom img.desktop {
-        display: block;
-    }
-}
